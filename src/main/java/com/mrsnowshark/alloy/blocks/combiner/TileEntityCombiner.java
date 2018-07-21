@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.texture.ITickable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -14,42 +15,31 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityCombiner extends TileEntity implements ITickable, ICapabilityProvider {
-
+public class TileEntityCombiner extends TileEntity implements IInventory, ITickable {
 	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
 	private String customName;
-	private ItemStackHandler handler;
 
 	private int burnTime;
 	private int currentBurnTime;
 	private int cookTime;
 	private int totalCookTime;
 
-	public TileEntityCombiner() {
-		this.handler = new ItemStackHandler(4);
-	}
-
+	@Override
 	public String getName() {
 		return this.hasCustomName() ? this.customName : "container.combiner";
 	}
 
+	@Override
 	public boolean hasCustomName() {
 		return this.customName != null && !this.customName.isEmpty();
 	}
@@ -64,10 +54,12 @@ public class TileEntityCombiner extends TileEntity implements ITickable, ICapabi
 				: new TextComponentTranslation(this.getName());
 	}
 
+	@Override
 	public int getSizeInventory() {
 		return this.inventory.size();
 	}
 
+	@Override
 	public boolean isEmpty() {
 		for (ItemStack stack : this.inventory) {
 			if (!stack.isEmpty())
@@ -76,6 +68,66 @@ public class TileEntityCombiner extends TileEntity implements ITickable, ICapabi
 		return true;
 	}
 
+	@Override
+	public ItemStack getStackInSlot(int index) {
+		return (ItemStack) this.inventory.get(index);
+	}
+
+	@Override
+	public ItemStack decrStackSize(int index, int count) {
+		return ItemStackHelper.getAndSplit(this.inventory, index, count);
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		return ItemStackHelper.getAndRemove(this.inventory, index);
+	}
+
+	@Override
+	public void setInventorySlotContents(int index, ItemStack stack) {
+		ItemStack itemstack = (ItemStack) this.inventory.get(index);
+		boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack)
+				&& ItemStack.areItemStackTagsEqual(stack, itemstack);
+		this.inventory.set(index, stack);
+
+		if (stack.getCount() > this.getInventoryStackLimit())
+			stack.setCount(this.getInventoryStackLimit());
+		if (index == 0 && index + 1 == 1 && !flag) {
+			ItemStack stack1 = (ItemStack) this.inventory.get(index + 1);
+			this.totalCookTime = this.getCookTime(stack, stack1);
+			this.cookTime = 0;
+			this.markDirty();
+		}
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
+		this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+		ItemStackHelper.loadAllItems(compound, this.inventory);
+		this.burnTime = compound.getInteger("BurnTime");
+		this.cookTime = compound.getInteger("CookTime");
+		this.totalCookTime = compound.getInteger("CookTimeTotal");
+		this.currentBurnTime = getItemBurnTime((ItemStack) this.inventory.get(2));
+
+		if (compound.hasKey("CustomName", 8))
+			this.setCustomName(compound.getString("CustomName"));
+	}
+
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
+		compound.setInteger("BurnTime", (short) this.burnTime);
+		compound.setInteger("CookTime", (short) this.cookTime);
+		compound.setInteger("CookTimeTotal", (short) this.totalCookTime);
+		ItemStackHelper.saveAllItems(compound, this.inventory);
+
+		if (this.hasCustomName())
+			compound.setString("CustomName", this.customName);
+		return compound;
+	}
+
+	@Override
 	public int getInventoryStackLimit() {
 		return 64;
 	}
@@ -85,8 +137,8 @@ public class TileEntityCombiner extends TileEntity implements ITickable, ICapabi
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static boolean isBurning(TileEntityCombiner tileentity) {
-		return tileentity.getField(0) > 0;
+	public static boolean isBurning(IInventory inventory) {
+		return inventory.getField(0) > 0;
 	}
 
 	public void update() {
@@ -226,12 +278,22 @@ public class TileEntityCombiner extends TileEntity implements ITickable, ICapabi
 		return getItemBurnTime(fuel) > 0;
 	}
 
+	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
 		return this.world.getTileEntity(this.pos) != this ? false
 				: player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D,
 						(double) this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
+	@Override
+	public void openInventory(EntityPlayer player) {
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+	}
+
+	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 
 		if (index == 3)
@@ -247,6 +309,7 @@ public class TileEntityCombiner extends TileEntity implements ITickable, ICapabi
 		return "am:combiner";
 	}
 
+	@Override
 	public int getField(int id) {
 		switch (id) {
 		case 0:
@@ -262,6 +325,7 @@ public class TileEntityCombiner extends TileEntity implements ITickable, ICapabi
 		}
 	}
 
+	@Override
 	public void setField(int id, int value) {
 		switch (id) {
 		case 0:
@@ -279,85 +343,18 @@ public class TileEntityCombiner extends TileEntity implements ITickable, ICapabi
 	}
 
 	@Override
+	public int getFieldCount() {
+		return 4;
+	}
+
+	@Override
+	public void clear() {
+		this.inventory.clear();
+	}
+
+	@Override
 	public void tick() {
-
-	}
-
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			return (T) this.handler;
-		}
-		return super.getCapability(capability, facing);
-	}
-
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			return true;
-		}
-		return super.hasCapability(capability, facing);
-	}
-
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		int metadata = getBlockMetadata();
-		return new SPacketUpdateTileEntity(this.pos, metadata, nbt);
-	}
-
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-		this.readFromNBT(pkt.getNbtCompound());
-	}
-
-	@Override
-	public NBTTagCompound getUpdateTag() {
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		return nbt;
-	}
-
-	@Override
-	public void handleUpdateTag(NBTTagCompound tag) {
-		this.readFromNBT(tag);
-	}
-
-	@Override
-	public NBTTagCompound getTileData() {
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		return nbt;
-	}
-	
-	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
-		this.handler.deserializeNBT(compound.getCompoundTag("ItemStackHandler"));
-		this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
-		ItemStackHelper.loadAllItems(compound, this.inventory);
-		this.burnTime = compound.getInteger("BurnTime");
-		this.cookTime = compound.getInteger("CookTime");
-		this.totalCookTime = compound.getInteger("CookTimeTotal");
-		this.currentBurnTime = getItemBurnTime((ItemStack) this.inventory.get(2));
-
-		if (compound.hasKey("CustomName", 8))
-			this.setCustomName(compound.getString("CustomName"));
-
-	}
-
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
-		compound.setTag("ItemStackHandler", handler.serializeNBT());
-		compound.setInteger("BurnTime", (short) this.burnTime);
-		compound.setInteger("CookTime", (short) this.cookTime);
-		compound.setInteger("CookTimeTotal", (short) this.totalCookTime);
-		ItemStackHelper.saveAllItems(compound, this.inventory);
-
-		if (this.hasCustomName())
-			compound.setString("CustomName", this.customName);
-		return compound;
+		// TODO Auto-generated method stub
+		
 	}
 }

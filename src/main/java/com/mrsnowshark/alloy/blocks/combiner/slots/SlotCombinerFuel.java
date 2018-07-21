@@ -2,14 +2,14 @@ package com.mrsnowshark.alloy.blocks.combiner.slots;
 
 import com.mrsnowshark.alloy.blocks.combiner.TileEntityCombiner;
 
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
-public class SlotCombinerFuel extends SlotItemHandler{
+public class SlotCombinerFuel extends Slot{
 
-	public SlotCombinerFuel(IItemHandler inventory, int index, int x, int y) {
-		super(inventory, index, x, y);
+	public SlotCombinerFuel(IInventory tileentity, int index, int x, int y) {
+		super(tileentity, index, x, y);
 	}
 
 	@Override

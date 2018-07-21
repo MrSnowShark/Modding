@@ -7,27 +7,26 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerCombiner extends Container {
 
-	private final TileEntityCombiner tileentity;
+	private final IInventory tileentity;
 	private int cookTime, totalCookTime, burnTime, currentBurnTime;
 
-	public ContainerCombiner(InventoryPlayer player, TileEntityCombiner tileentity) {
+	public ContainerCombiner(InventoryPlayer player, IInventory tileentity) {
 		this.tileentity = tileentity;
 
-		IItemHandler handler = tileentity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-		this.addSlotToContainer(new SlotItemHandler(handler, 0, 26, 11));
-		this.addSlotToContainer(new SlotItemHandler(handler, 1, 26, 59));
-		this.addSlotToContainer(new SlotCombinerFuel(handler, 2, 7, 35));
-		this.addSlotToContainer(new SlotCombinerOutput(player.player, handler, 3, 81, 36));
+		this.addSlotToContainer(new Slot(tileentity, 0, 26, 11));
+		this.addSlotToContainer(new Slot(tileentity, 1, 26, 59));
+		this.addSlotToContainer(new SlotCombinerFuel(tileentity, 2, 7, 35));
+		this.addSlotToContainer(new SlotCombinerOutput(player.player, tileentity, 3, 81, 36));
 
 		for (int y = 0; y < 3; y++) {
 			for (int x = 0; x < 9; x++) {

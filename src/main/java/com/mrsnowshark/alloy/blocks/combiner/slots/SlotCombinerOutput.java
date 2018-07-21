@@ -1,14 +1,18 @@
 package com.mrsnowshark.alloy.blocks.combiner.slots;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
-public class SlotCombinerOutput extends SlotItemHandler{
+public class SlotCombinerOutput extends Slot{
+	
+	private final EntityPlayer player;
+	private int removeCount;
 
-	public SlotCombinerOutput(EntityPlayer player, IItemHandler inventory, int index, int x, int y) {
+	public SlotCombinerOutput(EntityPlayer player, IInventory inventory, int index, int x, int y) {
 		super(inventory, index, x, y);
+		this.player = player;
 	}
 
 	@Override
