@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "XXX",
+        " I ",
+        " I "
+    ],
+    
+    "key":
+    {
+        "X":
+        {
+            "item": "am:irondiamond"
+        },
+        
+        "I":
+        {
+            "item": "minecraft:stick"
+        }
+    },
+    
+    "result":
+    {
+        "item": "am:irondiamondpickaxe",
+        "count": 1
+    }
+}

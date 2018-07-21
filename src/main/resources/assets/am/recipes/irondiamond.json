@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shapeless",
+ 
+    "ingredients":
+    [
+ 
+    {
+      "item": "minecraft:iron_ingot"
+    },
+ 
+    {
+      "item": "minecraft:diamond"
+    }
+   
+    ],
+ 
+    "result":
+    {
+        "item": "am:irondiamond",
+        "count": 1
+    }
+}

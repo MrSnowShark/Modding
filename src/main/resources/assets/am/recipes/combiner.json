@@ -1,0 +1,39 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "DOD",
+        "OFO",
+        "BBB"
+    ],
+    
+    "key":
+    {
+        "F":
+        {
+            "item": "minecraft:furnace"
+        },
+        
+        "B":
+        {
+            "item": "minecraft:iron_block"
+        },
+        
+        "O":
+        {
+            "item": "minecraft:obsidian"
+        },
+        
+        "D":
+        {
+            "item": "minecraft:diamond"
+        }
+    },
+    
+    "result":
+    {
+        "item": "am:combiner",
+        "count": 1
+    }
+}

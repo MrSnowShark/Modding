@@ -1,0 +1,46 @@
+{
+	"variants": {
+		"burning=false,facing=north": {
+			"model": "am:combiner"
+		},
+		"burning=false,facing=east": {
+			"model": "am:combiner",
+			"y": 90
+		},
+		"burning=false,facing=south": {
+			"model": "am:combiner",
+			"y": 180
+		},
+		"burning=false,facing=west": {
+			"model": "am:combiner",
+			"y": 270
+		},
+		"burning=false,facing=down": {
+			"model": "am:combiner"
+		},
+		"burning=false,facing=up": {
+			"model": "am:combiner"
+		},
+		"burning=true,facing=north": {
+			"model": "am:lit_combiner"
+		},
+		"burning=true,facing=east": {
+			"model": "am:lit_combiner",
+			"y": 90
+		},
+		"burning=true,facing=south": {
+			"model": "am:lit_combiner",
+			"y": 180
+		},
+		"burning=true,facing=west": {
+			"model": "am:lit_combiner",
+			"y": 270
+		},
+		"burning=true,facing=down": {
+			"model": "am:lit_combiner"
+		},
+		"burning=true,facing=up": {
+			"model": "am:lit_combiner"
+		}
+	}
+}

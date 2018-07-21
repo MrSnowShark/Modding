@@ -1,0 +1,89 @@
+//IronDiamond
+item.irondiamond.name=IronDiamond
+item.irondiamondpickaxe.name=IronDiamond Pickaxe
+item.irondiamondsword.name=IronDiamond Sword
+item.irondiamondaxe.name=IronDiamond Axe
+item.irondiamondshovel.name=IronDiamond Shovel
+item.irondiamondhoe.name=IronDiamond Hoe
+item.irondiamondhelmet.name=IronDiamond Helmet
+item.irondiamondchestplate.name=IronDiamond Chestplate
+item.irondiamondleggings.name=IronDiamond Leggings
+item.irondiamondboots.name=IronDiamond Boots
+
+//GoldDiamond
+item.golddiamond.name=GoldDiamond
+item.golddiamondpickaxe.name=GoldDiamond Pickaxe
+item.golddiamondsword.name=GoldDiamond Sword
+item.golddiamondaxe.name=GoldDiamond Axe
+item.golddiamondshovel.name=GoldDiamond Shovel
+item.golddiamondhoe.name=GoldDiamond Hoe
+item.golddiamondhelmet.name=GoldDiamond Helmet
+item.golddiamondchestplate.name=GoldDiamond Chestplate
+item.golddiamondleggings.name=GoldDiamond Leggings
+item.golddiamondboots.name=GoldDiamond Boots
+
+//MegaMite
+item.megamite.name=Megamite
+item.megamitepickaxe.name=Megamite Pickaxe
+item.megamitesword.name=Megamite Sword
+item.megamiteaxe.name=Megamite Axe
+item.megamiteshovel.name=Megamite Shovel
+item.megamitehoe.name=Megamite Hoe
+item.megamitehelmet.name=Megamite Helmet
+item.megamitechestplate.name=Megamite Chestplate
+item.megamiteleggings.name=Megamite Leggings
+item.megamiteboots.name=Megamite Boots
+
+//IronGold
+item.irongold.name=Irongold
+item.irongoldpickaxe.name=Irongold Pickaxe
+item.irongoldsword.name=Irongold Sword
+item.irongoldaxe.name=Irongold Axe
+item.irongoldshovel.name=Irongold Shovel
+item.irongoldhoe.name=Irongold Hoe
+item.irongoldhelmet.name=Irongold Helmet
+item.irongoldchestplate.name=Irongold Chestplate
+item.irongoldleggings.name=Irongold Leggings
+item.irongoldboots.name=Irongold Boots
+
+//Emerald
+item.emeraldpickaxe.name=Emerald Pickaxe
+item.emeraldsword.name=Emerald Sword
+item.emeraldaxe.name=Emerald Axe
+item.emeraldshovel.name=Emerald Shovel
+item.emeraldhoe.name=Emerald Hoe
+item.emeraldhelmet.name=Emerald Helmet
+item.emeraldchestplate.name=Emerald Chestplate
+item.emeraldleggings.name=Emerald Leggings
+item.emeraldboots.name=Emerald Boots
+
+//EmeraldDiamond
+item.emeralddiamond.name=Emeralddiamond
+item.emeralddiamondpickaxe.name=Emeralddiamond Pickaxe
+item.emeralddiamondsword.name=Emeralddiamond Sword
+item.emeralddiamondaxe.name=Emeralddiamond Axe
+item.emeralddiamondshovel.name=Emeralddiamond Shovel
+item.emeralddiamondhoe.name=Emeralddiamond Hoe
+item.emeralddiamondhelmet.name=Emeralddiamond Helmet
+item.emeralddiamondchestplate.name=Emeralddiamond Chestplate
+item.emeralddiamondleggings.name=Emeralddiamond Leggings
+item.emeralddiamondboots.name=Emeralddiamond Boots
+
+//Obsidian
+item.obsidianpickaxe.name=Obsidian Pickaxe
+item.obsidiansword.name=Obsidian Sword
+item.obsidianaxe.name=Obsidian Axe
+item.obsidianshovel.name=Obsidian Shovel
+item.obsidianhoe.name=Obsidian Hoe
+item.obsidianhelmet.name=Obsidian Helmet
+item.obsidianchestplate.name=Obsidian Chestplate
+item.obsidianleggings.name=Obsidian Leggings
+item.obsidianboots.name=Obsidian Boots
+
+
+//Combiner
+tile.combiner.name=Combiner
+container.combiner=Combiner
+
+//Tab
+itemGroup.tabAlloy=Alloy
