@@ -12,8 +12,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
 public class ContainerCombiner extends Container {
 
@@ -37,6 +35,13 @@ public class ContainerCombiner extends Container {
 		for (int x = 0; x < 9; x++) {
 			this.addSlotToContainer(new Slot(player, x, 8 + x * 18, 142));
 		}
+	}
+	
+	@Override
+	public void addListener(IContainerListener listener) 
+	{
+		super.addListener(listener);
+		listener.sendAllWindowProperties(this, this.tileentity);
 	}
 
 	@Override

@@ -354,7 +354,6 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 
 	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
-		
+
 	}
 }
