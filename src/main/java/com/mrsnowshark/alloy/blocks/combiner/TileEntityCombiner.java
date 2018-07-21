@@ -21,7 +21,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -270,7 +270,8 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 			if (item == Items.BLAZE_ROD)
 				return 2400;
 
-			return GameRegistry.getFuelValue(fuel);
+			return ForgeEventFactory.getItemBurnTime(fuel);
+			//return GameRegistry.getFuelValue(fuel);
 		}
 	}
 

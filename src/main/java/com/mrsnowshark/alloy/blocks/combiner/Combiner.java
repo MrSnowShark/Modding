@@ -28,8 +28,6 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
 public class Combiner extends BlockBase implements ITileEntityProvider {
 
@@ -133,12 +131,13 @@ public class Combiner extends BlockBase implements ITileEntityProvider {
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 
-		TileEntityCombiner tileentity = (TileEntityCombiner) worldIn.getTileEntity(pos);
-		IItemHandler handler = tileentity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-		for (int slot = 0; slot < handler.getSlots() - 1; slot++) {
-			ItemStack stack = handler.getStackInSlot(slot);
-			InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack);
+		TileEntity tileentity = worldIn.getTileEntity(pos);
+
+		if (tileentity instanceof TileEntityCombiner) {
+			InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityCombiner) tileentity);
+			worldIn.updateComparatorOutputLevel(pos, this);
 		}
+
 		super.breakBlock(worldIn, pos, state);
 	}
 

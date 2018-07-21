@@ -7,12 +7,8 @@ import net.minecraft.item.ItemStack;
 
 public class SlotCombinerOutput extends Slot{
 	
-	private final EntityPlayer player;
-	private int removeCount;
-
 	public SlotCombinerOutput(EntityPlayer player, IInventory inventory, int index, int x, int y) {
 		super(inventory, index, x, y);
-		this.player = player;
 	}
 
 	@Override
