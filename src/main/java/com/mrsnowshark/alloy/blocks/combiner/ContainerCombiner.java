@@ -36,10 +36,9 @@ public class ContainerCombiner extends Container {
 			this.addSlotToContainer(new Slot(player, x, 8 + x * 18, 142));
 		}
 	}
-	
+
 	@Override
-	public void addListener(IContainerListener listener) 
-	{
+	public void addListener(IContainerListener listener) {
 		super.addListener(listener);
 		listener.sendAllWindowProperties(this, this.tileentity);
 	}
@@ -75,7 +74,7 @@ public class ContainerCombiner extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		return !playerIn.isSpectator();
+		return this.tileentity.isUsableByPlayer(playerIn);
 	}
 
 	@Override

@@ -205,9 +205,9 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 		else {
 			ItemStack result = CombinerRecipes.getInstance().getCombinerResult((ItemStack) this.inventory.get(0),
 					(ItemStack) this.inventory.get(1));
-			if (result.isEmpty())
+			if (result.isEmpty()) {
 				return false;
-			else {
+			} else {
 				ItemStack output = (ItemStack) this.inventory.get(3);
 				if (output.isEmpty())
 					return true;

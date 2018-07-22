@@ -17,13 +17,14 @@ public class CombinerRecipes {
 	private final Table<ItemStack, ItemStack, ItemStack> smeltingList = HashBasedTable
 			.<ItemStack, ItemStack, ItemStack>create();
 	private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
-
 	public static CombinerRecipes getInstance() {
 		return INSTANCE;
 	}
 
 	private CombinerRecipes() {
 		addCombinerRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(Items.DIAMOND),
+				new ItemStack(AlloyItems.IRONDIAMOND), 5.0F);
+		addCombinerRecipe(new ItemStack(Items.DIAMOND), new ItemStack(Items.IRON_INGOT),
 				new ItemStack(AlloyItems.IRONDIAMOND), 5.0F);
 		addCombinerRecipe(new ItemStack(AlloyItems.IRONDIAMOND), new ItemStack(Items.GOLD_INGOT),
 				new ItemStack(AlloyItems.MEGAMITE), 5.0F);
