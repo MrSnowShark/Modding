@@ -23,28 +23,28 @@ item.golddiamondleggings.name=GoldDiamond Leggings
 item.golddiamondboots.name=GoldDiamond Boots
 
 //MegaMite
-item.megamite.name=Megamite
-item.megamitepickaxe.name=Megamite Pickaxe
-item.megamitesword.name=Megamite Sword
-item.megamiteaxe.name=Megamite Axe
-item.megamiteshovel.name=Megamite Shovel
-item.megamitehoe.name=Megamite Hoe
-item.megamitehelmet.name=Megamite Helmet
-item.megamitechestplate.name=Megamite Chestplate
-item.megamiteleggings.name=Megamite Leggings
-item.megamiteboots.name=Megamite Boots
+item.megamite.name=MegaMite
+item.megamitepickaxe.name=MegaMite Pickaxe
+item.megamitesword.name=MegaMite Sword
+item.megamiteaxe.name=MegaMite Axe
+item.megamiteshovel.name=MegaMite Shovel
+item.megamitehoe.name=MegaMite Hoe
+item.megamitehelmet.name=MegaMite Helmet
+item.megamitechestplate.name=MegaMite Chestplate
+item.megamiteleggings.name=MegaMite Leggings
+item.megamiteboots.name=MegaMite Boots
 
 //IronGold
-item.irongold.name=Irongold
-item.irongoldpickaxe.name=Irongold Pickaxe
-item.irongoldsword.name=Irongold Sword
-item.irongoldaxe.name=Irongold Axe
-item.irongoldshovel.name=Irongold Shovel
-item.irongoldhoe.name=Irongold Hoe
-item.irongoldhelmet.name=Irongold Helmet
-item.irongoldchestplate.name=Irongold Chestplate
-item.irongoldleggings.name=Irongold Leggings
-item.irongoldboots.name=Irongold Boots
+item.irongold.name=IronGold
+item.irongoldpickaxe.name=IronGold Pickaxe
+item.irongoldsword.name=IronGold Sword
+item.irongoldaxe.name=IronGold Axe
+item.irongoldshovel.name=IronGold Shovel
+item.irongoldhoe.name=IronGold Hoe
+item.irongoldhelmet.name=IronGold Helmet
+item.irongoldchestplate.name=IronGold Chestplate
+item.irongoldleggings.name=IronGold Leggings
+item.irongoldboots.name=IronGold Boots
 
 //Emerald
 item.emeraldpickaxe.name=Emerald Pickaxe
@@ -58,16 +58,16 @@ item.emeraldleggings.name=Emerald Leggings
 item.emeraldboots.name=Emerald Boots
 
 //EmeraldDiamond
-item.emeralddiamond.name=Emeralddiamond
-item.emeralddiamondpickaxe.name=Emeralddiamond Pickaxe
-item.emeralddiamondsword.name=Emeralddiamond Sword
-item.emeralddiamondaxe.name=Emeralddiamond Axe
-item.emeralddiamondshovel.name=Emeralddiamond Shovel
-item.emeralddiamondhoe.name=Emeralddiamond Hoe
-item.emeralddiamondhelmet.name=Emeralddiamond Helmet
-item.emeralddiamondchestplate.name=Emeralddiamond Chestplate
-item.emeralddiamondleggings.name=Emeralddiamond Leggings
-item.emeralddiamondboots.name=Emeralddiamond Boots
+item.emeralddiamond.name=EmeraldDiamond
+item.emeralddiamondpickaxe.name=EmeraldDiamond Pickaxe
+item.emeralddiamondsword.name=EmeraldDiamond Sword
+item.emeralddiamondaxe.name=EmeraldDiamond Axe
+item.emeralddiamondshovel.name=EmeraldDiamond Shovel
+item.emeralddiamondhoe.name=EmeraldDiamond Hoe
+item.emeralddiamondhelmet.name=EmeraldDiamond Helmet
+item.emeralddiamondchestplate.name=EmeraldDiamond Chestplate
+item.emeralddiamondleggings.name=EmeraldDiamond Leggings
+item.emeralddiamondboots.name=EmeraldDiamond Boots
 
 //Obsidian
 item.obsidianpickaxe.name=Obsidian Pickaxe

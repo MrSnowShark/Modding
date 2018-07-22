@@ -271,7 +271,6 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 				return 2400;
 
 			return ForgeEventFactory.getItemBurnTime(fuel);
-			//return GameRegistry.getFuelValue(fuel);
 		}
 	}
 
