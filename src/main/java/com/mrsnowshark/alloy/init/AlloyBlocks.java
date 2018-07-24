@@ -12,5 +12,4 @@ public class AlloyBlocks {
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 
 	public static final Combiner COMBINER = new Combiner("combiner");
-
 }

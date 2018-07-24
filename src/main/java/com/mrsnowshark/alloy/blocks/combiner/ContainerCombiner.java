@@ -126,5 +126,4 @@ public class ContainerCombiner extends Container {
 		}
 		return stack;
 	}
-
 }

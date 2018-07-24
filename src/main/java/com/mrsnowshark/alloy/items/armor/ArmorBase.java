@@ -20,7 +20,6 @@ public class ArmorBase extends ItemArmor implements IHasModel {
 
 	@Override
 	public void registerModels() {
-
 		Alloy.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 

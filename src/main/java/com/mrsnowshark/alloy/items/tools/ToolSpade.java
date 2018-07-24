@@ -19,7 +19,6 @@ public class ToolSpade extends ItemSpade implements IHasModel {
 
 	@Override
 	public void registerModels() {
-
 		Alloy.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 }

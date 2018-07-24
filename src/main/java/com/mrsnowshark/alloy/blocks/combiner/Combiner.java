@@ -172,5 +172,4 @@ public class Combiner extends BlockBase implements ITileEntityProvider {
 
 		return ((EnumFacing) state.getValue(FACING)).getIndex();
 	}
-
 }
