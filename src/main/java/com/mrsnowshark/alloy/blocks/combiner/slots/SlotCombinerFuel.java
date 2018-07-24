@@ -6,7 +6,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class SlotCombinerFuel extends Slot{
+public class SlotCombinerFuel extends Slot {
 
 	public SlotCombinerFuel(IInventory tileentity, int index, int x, int y) {
 		super(tileentity, index, x, y);

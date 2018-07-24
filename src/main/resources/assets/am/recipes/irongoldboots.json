@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "X X",
+        "X X"
+    ],
+    
+    "key":
+    {
+        "X":
+        {
+            "item": "am:irongold"
+        }
+    },
+    
+    "result":
+    {
+        "item": "am:irongoldboots",
+        "count": 1
+    }
+}

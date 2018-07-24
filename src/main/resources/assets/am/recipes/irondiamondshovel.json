@@ -3,10 +3,11 @@
     
     "pattern":
     [
-        "XX",
-        "XI",
-        " I"
+        "X",
+        "I",
+        "I"
     ],
+
     
     "key":
     {
@@ -23,7 +24,7 @@
     
     "result":
     {
-        "item": "am:irondiamondaxe",
+        "item": "am:irondiamondshovel",
         "count": 1
     }
 }

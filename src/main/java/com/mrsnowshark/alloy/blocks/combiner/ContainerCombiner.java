@@ -7,7 +7,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -15,10 +14,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerCombiner extends Container {
 
-	private final IInventory tileentity;
+	private final TileEntityCombiner tileentity;
 	private int cookTime, totalCookTime, burnTime, currentBurnTime;
 
-	public ContainerCombiner(InventoryPlayer player, IInventory tileentity) {
+	public ContainerCombiner(InventoryPlayer player, TileEntityCombiner tileentity) {
 		this.tileentity = tileentity;
 
 		this.addSlotToContainer(new Slot(tileentity, 0, 26, 11));
@@ -45,8 +44,8 @@ public class ContainerCombiner extends Container {
 
 	@Override
 	public void detectAndSendChanges() {
-
 		super.detectAndSendChanges();
+
 		for (int i = 0; i < this.listeners.size(); ++i) {
 			IContainerListener listener = (IContainerListener) this.listeners.get(i);
 
@@ -79,7 +78,7 @@ public class ContainerCombiner extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-		ItemStack stack = ItemStack.EMPTY;
+		ItemStack stack = null;
 		Slot slot = (Slot) this.inventorySlots.get(index);
 
 		if (slot != null && slot.getHasStack()) {
@@ -127,4 +126,5 @@ public class ContainerCombiner extends Container {
 		}
 		return stack;
 	}
+
 }

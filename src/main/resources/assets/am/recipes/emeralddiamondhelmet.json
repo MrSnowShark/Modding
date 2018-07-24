@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "XXX",
+        "X X"
+    ],
+    "key":
+    {
+        "X":
+        {
+            "item": "am:emeralddiamond"
+        }
+    },
+    
+    "result":
+    {
+        "item": "am:emeralddiamondhelmet",
+        "count": 1
+    }
+}

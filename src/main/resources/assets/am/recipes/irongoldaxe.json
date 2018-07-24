@@ -7,12 +7,11 @@
         "XI",
         " I"
     ],
-    
     "key":
     {
         "X":
         {
-            "item": "am:irondiamond"
+            "item": "am:irongold"
         },
         
         "I":
@@ -23,7 +22,7 @@
     
     "result":
     {
-        "item": "am:irondiamondaxe",
+        "item": "am:irongoldaxe",
         "count": 1
     }
 }

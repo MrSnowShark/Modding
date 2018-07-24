@@ -12,7 +12,7 @@
     {
         "X":
         {
-            "item": "am:irondiamond"
+            "item": "am:golddiamond"
         },
         
         "I":
@@ -23,7 +23,7 @@
     
     "result":
     {
-        "item": "am:irondiamondaxe",
+        "item": "am:golddiamondaxe",
         "count": 1
     }
 }

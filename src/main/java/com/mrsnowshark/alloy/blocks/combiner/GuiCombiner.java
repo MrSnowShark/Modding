@@ -9,8 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiCombiner extends GuiContainer {
 
-	private static final ResourceLocation TEXTURES = new ResourceLocation(
-			Reference.MOD_ID, "textures/gui/combiner.png");
+	private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID, "textures/gui/combiner.png");
 	private final InventoryPlayer player;
 	private final TileEntityCombiner tileentity;
 
@@ -23,10 +22,8 @@ public class GuiCombiner extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String tileName = this.tileentity.getDisplayName().getUnformattedText();
-		this.fontRenderer.drawString(tileName, (this.xSize / 2 - this.fontRenderer.getStringWidth(tileName) / 2) + 3, 8,
-				4210752);
-		this.fontRenderer.drawString(this.player.getDisplayName().getUnformattedText(), 122, this.ySize - 96 + 2,
-				4210752);
+		this.fontRenderer.drawString(tileName, (this.xSize / 2 - this.fontRenderer.getStringWidth(tileName) / 2) + 3, 8, 4210752);
+		this.fontRenderer.drawString(this.player.getDisplayName().getUnformattedText(), 122, this.ySize - 96 + 2, 4210752);
 	}
 
 	@Override

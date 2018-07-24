@@ -1,12 +1,17 @@
 package com.mrsnowshark.alloy.blocks.combiner;
 
+import static com.mrsnowshark.alloy.util.helpers.EnumHelper.*;
+
+import javax.annotation.Nullable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.ITickable;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -16,7 +21,10 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -25,8 +33,9 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityCombiner extends TileEntity implements IInventory, ITickable {
+public class TileEntityCombiner extends TileEntity implements IInventory, ISidedInventory, ITickable {
 	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
+	int[] inv = new int[4];
 	private String customName;
 
 	private int burnTime;
@@ -50,8 +59,7 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 
 	@Override
 	public ITextComponent getDisplayName() {
-		return this.hasCustomName() ? new TextComponentString(this.getName())
-				: new TextComponentTranslation(this.getName());
+		return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
 	}
 
 	@Override
@@ -70,7 +78,7 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		return (ItemStack) this.inventory.get(index);
+		return this.inventory.get(index);
 	}
 
 	@Override
@@ -85,15 +93,14 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
-		ItemStack itemstack = (ItemStack) this.inventory.get(index);
-		boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack)
-				&& ItemStack.areItemStackTagsEqual(stack, itemstack);
+		ItemStack itemstack = this.inventory.get(index);
+		boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
 		this.inventory.set(index, stack);
 
 		if (stack.getCount() > this.getInventoryStackLimit())
 			stack.setCount(this.getInventoryStackLimit());
 		if (index == 0 && index + 1 == 1 && !flag) {
-			ItemStack stack1 = (ItemStack) this.inventory.get(index + 1);
+			ItemStack stack1 = this.inventory.get(index + 1);
 			this.totalCookTime = this.getCookTime(stack, stack1);
 			this.cookTime = 0;
 			this.markDirty();
@@ -108,7 +115,7 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 		this.burnTime = compound.getInteger("BurnTime");
 		this.cookTime = compound.getInteger("CookTime");
 		this.totalCookTime = compound.getInteger("CookTimeTotal");
-		this.currentBurnTime = getItemBurnTime((ItemStack) this.inventory.get(2));
+		this.currentBurnTime = getItemBurnTime(this.inventory.get(2));
 
 		if (compound.hasKey("CustomName", 8))
 			this.setCustomName(compound.getString("CustomName"));
@@ -141,6 +148,7 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 		return inventory.getField(0) > 0;
 	}
 
+	@Override
 	public void update() {
 		boolean flag = this.isBurning();
 		boolean flag1 = false;
@@ -149,10 +157,9 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 			--this.burnTime;
 
 		if (!this.world.isRemote) {
-			ItemStack stack = (ItemStack) this.inventory.get(2);
+			ItemStack stack = this.inventory.get(2);
 
-			if (this.isBurning() || !stack.isEmpty() && !((((ItemStack) this.inventory.get(0)).isEmpty())
-					|| ((ItemStack) this.inventory.get(1)).isEmpty())) {
+			if (this.isBurning() || !stack.isEmpty() && !(((this.inventory.get(0)).isEmpty()) || (this.inventory.get(1)).isEmpty())) {
 				if (!this.isBurning() && this.canSmelt()) {
 					this.burnTime = getItemBurnTime(stack);
 					this.currentBurnTime = this.burnTime;
@@ -176,8 +183,7 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 
 					if (this.cookTime == this.totalCookTime) {
 						this.cookTime = 0;
-						this.totalCookTime = this.getCookTime((ItemStack) this.inventory.get(0),
-								(ItemStack) this.inventory.get(1));
+						this.totalCookTime = this.getCookTime(this.inventory.get(0), this.inventory.get(1));
 						this.smeltItem();
 						flag1 = true;
 					}
@@ -196,19 +202,18 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 	}
 
 	public int getCookTime(ItemStack input1, ItemStack input2) {
-		return 200;
+		return 100; // 1600
 	}
 
 	private boolean canSmelt() {
-		if (((ItemStack) this.inventory.get(0)).isEmpty() || ((ItemStack) this.inventory.get(1)).isEmpty())
+		if ((this.inventory.get(0)).isEmpty() || (this.inventory.get(1)).isEmpty())
 			return false;
 		else {
-			ItemStack result = CombinerRecipes.getInstance().getCombinerResult((ItemStack) this.inventory.get(0),
-					(ItemStack) this.inventory.get(1));
-			if (result.isEmpty()) {
+			ItemStack result = CombinerRecipes.getInstance().getCombinerResult(this.inventory.get(0), this.inventory.get(1));
+			if (result.isEmpty())
 				return false;
-			} else {
-				ItemStack output = (ItemStack) this.inventory.get(3);
+			else {
+				ItemStack output = this.inventory.get(3);
 				if (output.isEmpty())
 					return true;
 				if (!output.isItemEqual(result))
@@ -221,10 +226,10 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 
 	public void smeltItem() {
 		if (this.canSmelt()) {
-			ItemStack input1 = (ItemStack) this.inventory.get(0);
-			ItemStack input2 = (ItemStack) this.inventory.get(1);
+			ItemStack input1 = this.inventory.get(0);
+			ItemStack input2 = this.inventory.get(1);
 			ItemStack result = CombinerRecipes.getInstance().getCombinerResult(input1, input2);
-			ItemStack output = (ItemStack) this.inventory.get(3);
+			ItemStack output = this.inventory.get(3);
 
 			if (output.isEmpty())
 				this.inventory.set(3, result.copy());
@@ -280,9 +285,7 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 
 	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
-		return this.world.getTileEntity(this.pos) != this ? false
-				: player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D,
-						(double) this.pos.getZ() + 0.5D) <= 64.0D;
+		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
 	@Override
@@ -296,6 +299,8 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 
+		if (index > 3)
+			return false;
 		if (index == 3)
 			return false;
 		else if (index != 2)
@@ -353,7 +358,53 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ITicka
 	}
 
 	@Override
-	public void tick() {
+	public int[] getSlotsForFace(EnumFacing side) {
+		return getSlotIntForFace(getOffsetFacingWithProperty(side, getFacing(pos)));
+	}
 
+	public int[] getSlotIntForFace(EnumFacing side) {
+		switch (side) {
+		case NORTH:
+		case SOUTH:
+			return new int[] {};
+		case WEST:
+			return new int[] { 0 };
+		case EAST:
+			return new int[] { 1 };
+		case UP:
+			return new int[] { 2 };
+		case DOWN:
+			return new int[] { 3 };
+		}
+
+		return new int[] {};
+	}
+
+	@Override
+	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
+		return canInsert(index, itemStackIn, getOffsetFacingWithProperty(direction, getFacing(pos)));
+	}
+
+	private boolean canInsert(int index, ItemStack stack, EnumFacing direction) {
+		return direction == EnumFacing.UP && isItemFuel(stack) ? isItemValidForSlot(index, stack) : (direction == EnumFacing.EAST && index == 1) || (direction == EnumFacing.WEST && index == 0);
+	}
+
+	@Override
+	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
+		return canExtract(index, stack, getOffsetFacingWithProperty(direction, getFacing(pos)));
+	}
+
+	private boolean canExtract(int index, ItemStack stack, EnumFacing direction) {
+		return direction == EnumFacing.DOWN && index == 3;
+	}
+
+	@Nullable
+	private EnumFacing getFacing(BlockPos pos) {
+		IBlockState state = world.getBlockState(pos);
+		if (state.getProperties().containsKey(Combiner.FACING)) {
+			EnumFacing facing = state.getValue(Combiner.FACING);
+			return facing;
+		}
+		return null;
 	}
 }

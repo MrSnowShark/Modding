@@ -4,7 +4,7 @@
     "pattern":
     [
         "XX",
-        "XI",
+        " I",
         " I"
     ],
     
@@ -12,7 +12,7 @@
     {
         "X":
         {
-            "item": "am:irondiamond"
+            "item": "minecraft:emerald"
         },
         
         "I":
@@ -23,7 +23,7 @@
     
     "result":
     {
-        "item": "am:irondiamondaxe",
+        "item": "am:emeraldhoe",
         "count": 1
     }
 }

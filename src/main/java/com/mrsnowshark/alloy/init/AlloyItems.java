@@ -30,26 +30,19 @@ public class AlloyItems {
 
 	// Materials
 	public static final ToolMaterial IDT = EnumHelper.addToolMaterial("IDT", 3, 1850, 14.0F, 6, 24);
-	public static ArmorMaterial IDA = EnumHelper.addArmorMaterial("IDA", Reference.MOD_ID + ":irondiamond", 48,
-			new int[] { 5, 11, 14, 6 }, 19, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+	public static ArmorMaterial IDA = EnumHelper.addArmorMaterial("IDA", Reference.MOD_ID + ":irondiamond", 48, new int[] { 5, 11, 14, 6 }, 19, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 	public static ToolMaterial GDT = EnumHelper.addToolMaterial("GDT", 3, 1600, 20.0F, 5, 32);
-	public static ArmorMaterial GDA = EnumHelper.addArmorMaterial("GDA", Reference.MOD_ID + ":golddiamond", 40,
-			new int[] { 4, 9, 13, 5 }, 35, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+	public static ArmorMaterial GDA = EnumHelper.addArmorMaterial("GDA", Reference.MOD_ID + ":golddiamond", 40, new int[] { 4, 9, 13, 5 }, 35, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 	public static ToolMaterial OBT = EnumHelper.addToolMaterial("OBT", 3, 1400, 6.0F, 5, 9);
-	public static ArmorMaterial OBA = EnumHelper.addArmorMaterial("OBA", Reference.MOD_ID + ":obsidian", 25,
-			new int[] { 3, 5, 7, 5 }, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+	public static ArmorMaterial OBA = EnumHelper.addArmorMaterial("OBA", Reference.MOD_ID + ":obsidian", 25, new int[] { 3, 5, 7, 5 }, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 	public static ToolMaterial IGT = EnumHelper.addToolMaterial("IGT", 2, 500, 18.0F, 3, 36);
-	public static ArmorMaterial IGA = EnumHelper.addArmorMaterial("IGA", Reference.MOD_ID + ":irongold", 22,
-			new int[] { 3, 8, 11, 4 }, 34, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+	public static ArmorMaterial IGA = EnumHelper.addArmorMaterial("IGA", Reference.MOD_ID + ":irongold", 22, new int[] { 3, 8, 11, 4 }, 34, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 	public static ToolMaterial MMT = EnumHelper.addToolMaterial("MMT", 3, 2100, 26.0F, 8, 40);
-	public static ArmorMaterial MMA = EnumHelper.addArmorMaterial("MMA", Reference.MOD_ID + ":megamite", 56,
-			new int[] { 6, 14, 19, 8 }, 44, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+	public static ArmorMaterial MMA = EnumHelper.addArmorMaterial("MMA", Reference.MOD_ID + ":megamite", 56, new int[] { 6, 14, 19, 8 }, 44, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 	public static ToolMaterial EMT = EnumHelper.addToolMaterial("EMT", 3, 1200, 7.0F, 3, 9);
-	public static ArmorMaterial EMA = EnumHelper.addArmorMaterial("EMA", Reference.MOD_ID + ":emerald", 22,
-			new int[] { 2, 6, 8, 5 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+	public static ArmorMaterial EMA = EnumHelper.addArmorMaterial("EMA", Reference.MOD_ID + ":emerald", 22, new int[] { 2, 6, 8, 5 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 	public static ToolMaterial EDT = EnumHelper.addToolMaterial("EDT", 3, 2000, 15.0F, 6, 19);
-	public static ArmorMaterial EDA = EnumHelper.addArmorMaterial("EDA", Reference.MOD_ID + ":emeralddiamond", 45,
-			new int[] { 5, 12, 16, 7 }, 19, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
+	public static ArmorMaterial EDA = EnumHelper.addArmorMaterial("EDA", Reference.MOD_ID + ":emeralddiamond", 45, new int[] { 5, 12, 16, 7 }, 19, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
 	// Materials
 	public static final Item IRONDIAMOND = new ItemBase("irondiamond");
@@ -103,37 +96,27 @@ public class AlloyItems {
 
 	// Armor
 	public static final Item IRONDIAMOND_HELMET = new ArmorBase("irondiamondhelmet", IDA, 1, EntityEquipmentSlot.HEAD);
-	public static final Item IRONDIAMOND_CHESTPLATE = new ArmorBase("irondiamondchestplate", IDA, 1,
-			EntityEquipmentSlot.CHEST);
-	public static final Item IRONDIAMOND_LEGGINGS = new ArmorBase("irondiamondleggings", IDA, 2,
-			EntityEquipmentSlot.LEGS);
+	public static final Item IRONDIAMOND_CHESTPLATE = new ArmorBase("irondiamondchestplate", IDA, 1, EntityEquipmentSlot.CHEST);
+	public static final Item IRONDIAMOND_LEGGINGS = new ArmorBase("irondiamondleggings", IDA, 2, EntityEquipmentSlot.LEGS);
 	public static final Item IRONDIAMOND_BOOTS = new ArmorBase("irondiamondboots", IDA, 1, EntityEquipmentSlot.FEET);
 
 	public static final Item GOLDDIAMOND_HELMET = new ArmorBase("golddiamondhelmet", GDA, 1, EntityEquipmentSlot.HEAD);
-	public static final Item GOLDDIAMOND_CHESTPLATE = new ArmorBase("golddiamondchestplate", GDA, 1,
-			EntityEquipmentSlot.CHEST);
-	public static final Item GOLDDIAMOND_LEGGINGS = new ArmorBase("golddiamondleggings", GDA, 2,
-			EntityEquipmentSlot.LEGS);
+	public static final Item GOLDDIAMOND_CHESTPLATE = new ArmorBase("golddiamondchestplate", GDA, 1, EntityEquipmentSlot.CHEST);
+	public static final Item GOLDDIAMOND_LEGGINGS = new ArmorBase("golddiamondleggings", GDA, 2, EntityEquipmentSlot.LEGS);
 	public static final Item GOLDDIAMOND_BOOTS = new ArmorBase("golddiamondboots", GDA, 1, EntityEquipmentSlot.FEET);
 
 	public static final Item IRONGOLD_HELMET = new ArmorBase("irongoldhelmet", IGA, 1, EntityEquipmentSlot.HEAD);
-	public static final Item IRONGOLD_CHESTPLATE = new ArmorBase("irongoldchestplate", IGA, 1,
-			EntityEquipmentSlot.CHEST);
+	public static final Item IRONGOLD_CHESTPLATE = new ArmorBase("irongoldchestplate", IGA, 1, EntityEquipmentSlot.CHEST);
 	public static final Item IRONGOLD_LEGGINGS = new ArmorBase("irongoldleggings", IGA, 2, EntityEquipmentSlot.LEGS);
 	public static final Item IRONGOLD_BOOTS = new ArmorBase("irongoldboots", IGA, 1, EntityEquipmentSlot.FEET);
 
-	public static final Item EMERALDDIAMOND_HELMET = new ArmorBase("emeralddiamondhelmet", EDA, 1,
-			EntityEquipmentSlot.HEAD);
-	public static final Item EMERALDDIAMOND_CHESTPLATE = new ArmorBase("emeralddiamondchestplate", EDA, 1,
-			EntityEquipmentSlot.CHEST);
-	public static final Item EMERALDDIAMOND_LEGGINGS = new ArmorBase("emeralddiamondleggings", EDA, 2,
-			EntityEquipmentSlot.LEGS);
-	public static final Item EMERALDDIAMOND_BOOTS = new ArmorBase("emeralddiamondboots", EDA, 1,
-			EntityEquipmentSlot.FEET);
+	public static final Item EMERALDDIAMOND_HELMET = new ArmorBase("emeralddiamondhelmet", EDA, 1, EntityEquipmentSlot.HEAD);
+	public static final Item EMERALDDIAMOND_CHESTPLATE = new ArmorBase("emeralddiamondchestplate", EDA, 1, EntityEquipmentSlot.CHEST);
+	public static final Item EMERALDDIAMOND_LEGGINGS = new ArmorBase("emeralddiamondleggings", EDA, 2, EntityEquipmentSlot.LEGS);
+	public static final Item EMERALDDIAMOND_BOOTS = new ArmorBase("emeralddiamondboots", EDA, 1, EntityEquipmentSlot.FEET);
 
 	public static final Item MEGAMITE_HELMET = new ArmorBase("megamitehelmet", MMA, 1, EntityEquipmentSlot.HEAD);
-	public static final Item MEGAMITE_CHESTPLATE = new ArmorBase("megamitechestplate", MMA, 1,
-			EntityEquipmentSlot.CHEST);
+	public static final Item MEGAMITE_CHESTPLATE = new ArmorBase("megamitechestplate", MMA, 1, EntityEquipmentSlot.CHEST);
 	public static final Item MEGAMITE_LEGGINGS = new ArmorBase("megamiteleggings", MMA, 2, EntityEquipmentSlot.LEGS);
 	public static final Item MEGAMITE_BOOTS = new ArmorBase("megamiteboots", MMA, 1, EntityEquipmentSlot.FEET);
 
@@ -143,8 +126,7 @@ public class AlloyItems {
 	public static final Item EMERALD_BOOTS = new ArmorBase("emeraldboots", EMA, 1, EntityEquipmentSlot.FEET);
 
 	public static final Item OBSIDIAN_HELMET = new ArmorBase("obsidianhelmet", OBA, 1, EntityEquipmentSlot.HEAD);
-	public static final Item OBSIDIAN_CHESTPLATE = new ArmorBase("obsidianchestplate", OBA, 1,
-			EntityEquipmentSlot.CHEST);
+	public static final Item OBSIDIAN_CHESTPLATE = new ArmorBase("obsidianchestplate", OBA, 1, EntityEquipmentSlot.CHEST);
 	public static final Item OBSIDIAN_LEGGINGS = new ArmorBase("obsidianleggings", OBA, 2, EntityEquipmentSlot.LEGS);
 	public static final Item OBSIDIAN_BOOTS = new ArmorBase("obsidianboots", OBA, 1, EntityEquipmentSlot.FEET);
 }

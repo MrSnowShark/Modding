@@ -3,9 +3,9 @@
     
     "pattern":
     [
-        "XX",
-        "XI",
-        " I"
+        "X",
+        "X",
+        "I"
     ],
     
     "key":
@@ -23,7 +23,7 @@
     
     "result":
     {
-        "item": "am:irondiamondaxe",
+        "item": "am:irondiamondsword",
         "count": 1
     }
 }

@@ -3,9 +3,8 @@
     
     "pattern":
     [
-        "XX",
-        "XI",
-        " I"
+        "X X",
+        "X X"
     ],
     
     "key":
@@ -13,17 +12,12 @@
         "X":
         {
             "item": "am:irondiamond"
-        },
-        
-        "I":
-        {
-            "item": "minecraft:stick"
         }
     },
     
     "result":
     {
-        "item": "am:irondiamondaxe",
+        "item": "am:irondiamondboots",
         "count": 1
     }
 }

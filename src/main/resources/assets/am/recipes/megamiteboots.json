@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "X X",
+        "X X"
+    ],
+    
+    "key":
+    {
+        "X":
+        {
+            "item": "am:megamite"
+        }
+    },
+    
+    "result":
+    {
+        "item": "am:megamiteboots",
+        "count": 1
+    }
+}

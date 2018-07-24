@@ -1,7 +1,7 @@
 {
 	"parent": "block/cube",
 	"textures": {
-		"particle": "am:blocks/combiner_front_off",
+		"particle": "am:blocks/combiner_front_on",
 		"down": "am:blocks/combiner_top",
 		"up": "am:blocks/combiner_bottom",
 		"east": "am:blocks/combiner_side",

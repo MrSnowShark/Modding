@@ -3,16 +3,16 @@
     
     "pattern":
     [
-        "XX",
-        "XI",
-        " I"
+        "X",
+        "X",
+        "I"
     ],
     
     "key":
     {
         "X":
         {
-            "item": "am:irondiamond"
+            "item": "am:megamite"
         },
         
         "I":
@@ -23,7 +23,7 @@
     
     "result":
     {
-        "item": "am:irondiamondaxe",
+        "item": "am:megamitesword",
         "count": 1
     }
 }

@@ -41,8 +41,7 @@ public class Combiner extends BlockBase implements ITileEntityProvider {
 		setResistance(6000.0F);
 		setHarvestLevel("pickaxe", 3);
 
-		this.setDefaultState(
-				this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
 	}
 
 	@Override
@@ -58,8 +57,7 @@ public class Combiner extends BlockBase implements ITileEntityProvider {
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
 		if (!worldIn.isRemote) {
 			playerIn.openGui(Alloy.Instance, Reference.GUI_COMBINER, worldIn, pos.getX(), pos.getY(), pos.getZ());
@@ -95,11 +93,9 @@ public class Combiner extends BlockBase implements ITileEntityProvider {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 
 		if (active)
-			worldIn.setBlockState(pos, AlloyBlocks.COMBINER.getDefaultState()
-					.withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, true), 3);
+			worldIn.setBlockState(pos, AlloyBlocks.COMBINER.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, true), 3);
 		else
-			worldIn.setBlockState(pos, AlloyBlocks.COMBINER.getDefaultState()
-					.withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, false), 3);
+			worldIn.setBlockState(pos, AlloyBlocks.COMBINER.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, false), 3);
 
 		if (tileentity != null) {
 			tileentity.validate();
@@ -114,18 +110,15 @@ public class Combiner extends BlockBase implements ITileEntityProvider {
 	}
 
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-			float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
 
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
-			ItemStack stack) {
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 
-		worldIn.setBlockState(pos,
-				this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
+		worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 	}
 
 	@Override
