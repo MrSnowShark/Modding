@@ -19,7 +19,6 @@ public abstract class AbstractCombinerRecipeCategory<T extends IRecipeWrapper> i
 	protected static final int output = 3;
 
 	protected final IDrawableStatic staticFlame;
-	protected final IDrawableStatic staticArrow;
 	protected final IDrawableAnimated animatedFlame;
 	protected final IDrawableAnimated animatedArrow;
 
@@ -27,7 +26,7 @@ public abstract class AbstractCombinerRecipeCategory<T extends IRecipeWrapper> i
 		staticFlame = helper.createDrawable(TEXTURES, 176, 0, 14, 14);
 		animatedFlame = helper.createAnimatedDrawable(staticFlame, 300, IDrawableAnimated.StartDirection.TOP, true);
 
-		staticArrow = helper.createDrawable(TEXTURES, 176, 14, 24, 17);
+		IDrawableStatic staticArrow = helper.createDrawable(TEXTURES, 176, 14, 24, 17);
 		animatedArrow = helper.createAnimatedDrawable(staticArrow, 200, IDrawableAnimated.StartDirection.LEFT, false);
 	}
 }

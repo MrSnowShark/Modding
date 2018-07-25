@@ -6,7 +6,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 public class SlotCombinerOutput extends Slot {
-
+	
 	public SlotCombinerOutput(EntityPlayer player, IInventory inventory, int index, int x, int y) {
 		super(inventory, index, x, y);
 	}

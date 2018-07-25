@@ -36,7 +36,7 @@ public class CombinerRecipe implements IRecipeWrapper {
 			String experienceString = JEICompat.translateToLocalFormatted("gui.jei.category.smelting.experience", experience);
 			FontRenderer renderer = minecraft.fontRenderer;
 			int stringWidth = renderer.getStringWidth(experienceString);
-			renderer.drawString(experienceString, recipeWidth - stringWidth, 0, Color.GRAY.getRGB());
+			renderer.drawString(experienceString, recipeWidth - stringWidth, 0, Color.GREEN.getRGB());
 		}
 	}
 }

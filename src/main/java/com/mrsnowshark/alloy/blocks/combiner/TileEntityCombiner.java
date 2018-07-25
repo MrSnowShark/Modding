@@ -202,7 +202,7 @@ public class TileEntityCombiner extends TileEntity implements IInventory, ISided
 	}
 
 	public int getCookTime(ItemStack input1, ItemStack input2) {
-		return 100; // 1600
+		return 1600; // 1600
 	}
 
 	private boolean canSmelt() {

@@ -1,6 +1,7 @@
 package com.mrsnowshark.alloy.blocks.combiner;
 
 import com.mrsnowshark.alloy.blocks.combiner.slots.SlotCombinerFuel;
+import com.mrsnowshark.alloy.blocks.combiner.slots.SlotCombinerInput;
 import com.mrsnowshark.alloy.blocks.combiner.slots.SlotCombinerOutput;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,8 +21,8 @@ public class ContainerCombiner extends Container {
 	public ContainerCombiner(InventoryPlayer player, TileEntityCombiner tileentity) {
 		this.tileentity = tileentity;
 
-		this.addSlotToContainer(new Slot(tileentity, 0, 26, 11));
-		this.addSlotToContainer(new Slot(tileentity, 1, 26, 59));
+		this.addSlotToContainer(new SlotCombinerInput(tileentity, 0, 26, 11));
+		this.addSlotToContainer(new SlotCombinerInput(tileentity, 1, 26, 59));
 		this.addSlotToContainer(new SlotCombinerFuel(tileentity, 2, 7, 35));
 		this.addSlotToContainer(new SlotCombinerOutput(player.player, tileentity, 3, 81, 36));
 
@@ -78,8 +79,9 @@ public class ContainerCombiner extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-		ItemStack stack = null;
+		ItemStack stack = ItemStack.EMPTY;
 		Slot slot = (Slot) this.inventorySlots.get(index);
+		Slot slot1;
 
 		if (slot != null && slot.getHasStack()) {
 			ItemStack stack1 = slot.getStack();
@@ -90,7 +92,10 @@ public class ContainerCombiner extends Container {
 					return ItemStack.EMPTY;
 				slot.onSlotChange(stack1, stack);
 			} else if (index != 2 && index != 1 && index != 0) {
-				Slot slot1 = (Slot) this.inventorySlots.get(index + 1);
+				if(index == 39)
+					slot1 = (Slot) this.inventorySlots.get(index);
+				else
+					slot1 = (Slot) this.inventorySlots.get(index + 1);
 
 				if (!CombinerRecipes.getInstance().getCombinerResult(stack1, slot1.getStack()).isEmpty()) {
 					if (!this.mergeItemStack(stack1, 0, 2, false)) {
