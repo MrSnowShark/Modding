@@ -17,7 +17,7 @@ public class CombinerRecipeCategory extends AbstractCombinerRecipeCategory<Combi
 
 	public CombinerRecipeCategory(IGuiHelper helper) {
 		super(helper);
-		background = helper.createDrawable(TEXTURES, 4, 12, 150, 60);
+		background = helper.createDrawable(TEXTURES, 4, 10, 150, 70);
 		name = "Combiner";
 	}
 
@@ -28,8 +28,8 @@ public class CombinerRecipeCategory extends AbstractCombinerRecipeCategory<Combi
 
 	@Override
 	public void drawExtras(Minecraft minecraft) {
-		animatedFlame.draw(minecraft, 4, 42);
-		animatedArrow.draw(minecraft, 40, 23);
+		animatedFlame.draw(minecraft, 4, 44);
+		animatedArrow.draw(minecraft, 40, 25);
 	}
 
 	@Override
@@ -50,9 +50,9 @@ public class CombinerRecipeCategory extends AbstractCombinerRecipeCategory<Combi
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, CombinerRecipe recipeWrapper, IIngredients ingredients) {
 		IGuiItemStackGroup stacks = recipeLayout.getItemStacks();
-		stacks.init(input1, true, 21, 2);
-		stacks.init(input2, true, 21, 42);
-		stacks.init(output, false, 76, 23);
+		stacks.init(input1, true, 21, 0);
+		stacks.init(input2, true, 21, 48);
+		stacks.init(output, false, 76, 25);
 		stacks.set(ingredients);
 	}
 }

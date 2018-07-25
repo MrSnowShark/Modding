@@ -17,6 +17,7 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.util.text.translation.I18n;
 
+@JEIPlugin
 public class JEICompat implements IModPlugin {
 
 	@Override
@@ -34,7 +35,7 @@ public class JEICompat implements IModPlugin {
 		IRecipeTransferRegistry recipeTransfer = registry.getRecipeTransferRegistry();
 
 		registry.addRecipes(CombinerRecipeMaker.getRecipe(jeiHelpers), RecipeCategories.COMBINER);
-		registry.addRecipeClickArea(GuiCombiner.class, 110, 0, 50, 50, RecipeCategories.COMBINER);
+		registry.addRecipeClickArea(GuiCombiner.class, 44, 32, 20, 20, RecipeCategories.COMBINER);
 		recipeTransfer.addRecipeTransferHandler(ContainerCombiner.class, RecipeCategories.COMBINER, 0, 1, 3, 36);
 	}
 
