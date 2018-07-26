@@ -29,6 +29,7 @@ public class CombinerRecipes {
 		addCombinerRecipe(new ItemStack(Items.DIAMOND), new ItemStack(Items.EMERALD), new ItemStack(AlloyItems.EMERALDDIAMOND), 10.0F);
 		addCombinerRecipe(new ItemStack(AlloyItems.IRONDIAMOND), new ItemStack(Items.GOLD_INGOT), new ItemStack(AlloyItems.MEGAMITE), 10.0F);
 		addCombinerRecipe(new ItemStack(AlloyItems.GOLDDIAMOND), new ItemStack(Items.IRON_INGOT), new ItemStack(AlloyItems.MEGAMITE), 10.0F);
+		addCombinerRecipe(new ItemStack(AlloyItems.IRONGOLD), new ItemStack(Items.DIAMOND), new ItemStack(AlloyItems.MEGAMITE), 10.0F);
 	}
 
 	public void addCombinerRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
