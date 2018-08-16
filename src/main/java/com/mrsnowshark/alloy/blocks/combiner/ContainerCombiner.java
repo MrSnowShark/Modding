@@ -80,7 +80,7 @@ public class ContainerCombiner extends Container {
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
 		ItemStack stack = ItemStack.EMPTY;
-		Slot slot = (Slot) this.inventorySlots.get(index);
+		Slot slot = this.inventorySlots.get(index);
 		Slot slot1;
 
 		if (slot != null && slot.getHasStack()) {
@@ -93,9 +93,9 @@ public class ContainerCombiner extends Container {
 				slot.onSlotChange(stack1, stack);
 			} else if (index != 2 && index != 1 && index != 0) {
 				if(index == 39)
-					slot1 = (Slot) this.inventorySlots.get(index);
+					slot1 = this.inventorySlots.get(index);
 				else
-					slot1 = (Slot) this.inventorySlots.get(index + 1);
+					slot1 = this.inventorySlots.get(index + 1);
 
 				if (!CombinerRecipes.getInstance().getCombinerResult(stack1, slot1.getStack()).isEmpty()) {
 					if (!this.mergeItemStack(stack1, 0, 2, false)) {
